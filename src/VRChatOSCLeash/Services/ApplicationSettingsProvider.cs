@@ -1,5 +1,4 @@
 ﻿using LiteDB;
-using Microsoft.UI.Xaml;
 using Serilog;
 using VRChatOSCLeash.Models;
 using VRChatOSCLeash.Utilities;
@@ -8,6 +7,10 @@ namespace VRChatOSCLeash.Services;
 
 public interface IApplicationSettingsProvider
 {
+    /// <summary>
+    /// Fetch application settings from the database.
+    /// </summary>
+    /// <returns></returns>
     ApplicationSettings GetSettings();
 }
 

@@ -2,6 +2,7 @@
 using Serilog;
 using System;
 using System.Diagnostics;
+using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using VRChatOSCLeash.Messages;
@@ -200,17 +201,31 @@ public sealed class BackgroundLeashUpdater : IRecipient<EmergencyStopMessage>, I
 
 file class LeashCalculator
 {
+    /// <summary>
+    /// Get the vertical offset between 1 and -1 based on the front and back distances.
+    /// </summary>
+    /// <param name="leash">The OSCParameters to use</param>
+    /// <returns>A float containing the offset</returns>
     public static float GetVerticalOffset(OSCParameters leash) => Math.Clamp((leash.FrontDistance - leash.BackDistance) * leash.Stretch, -1f, 1f);
+
+    /// <summary>
+    /// Get the horizontal offset between 1 and -1 based on the left and right distances.
+    /// </summary>
+    /// <param name="leash">The OSCParameters to use</param>
+    /// <returns>A float containing the offset</returns>
     public static float GetHorizontalOffset(OSCParameters leash) => Math.Clamp((leash.RightDistance - leash.LeftDistance) * leash.Stretch, -1f, 1f);
+
     public static float GetHorizontalLook(OSCParameters leash, ThresholdSettings thresholds, float horizontalOffset) {
         if (leash.Stretch <= thresholds.TurningThreshold || leash.FrontDistance >= thresholds.TurningGoal) {
             return 0f;
         }
 
         float turn = thresholds.TurningMultiplier * horizontalOffset;
+
         turn = leash.RightDistance > leash.LeftDistance ? (turn += leash.BackDistance) : (turn -= leash.BackDistance);
         return Math.Clamp(turn, -1f, 1f);
     }
+
     public static bool ShouldRun(OSCParameters leash, ThresholdSettings thresholds, LeashData leashData) {
         bool shouldRun = leash.Stretch > thresholds.RunningMaxThreshold;
 
