@@ -34,8 +34,9 @@ namespace VRChatOSCLeash
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
+#if DEBUG
                 .WriteTo.Debug()
-                //.WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug)
+#endif
                 .WriteTo.File(StorageLocation.GetLogFile(), restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information, rollingInterval: RollingInterval.Day, retainedFileCountLimit: 5)
                 .CreateLogger();
 
