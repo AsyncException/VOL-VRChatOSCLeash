@@ -19,10 +19,10 @@ namespace VRChatOSCLeash.Services.VRChatOSC;
 public interface IVRChatOscClient
 {
     Task InitializeClient();
-    void Send(string address, params object?[] values);
-    void SendMovement(float verticalOffset, float horizontalOffset, float horizontalLook, bool shouldRun);
-    void SendMovement(LeashData data);
     void SendParameter<T>(string parameter, T value);
+    void Send(string address, params object?[] values);
+    void SendMovement(LeashData data);
+    void SendMovement(float verticalOffset, float horizontalOffset, float horizontalLook, bool shouldRun);
     Task StopClient();
 }
 
@@ -66,21 +66,21 @@ public partial class VRChatOscClient : IRecipient<ReconnectClientMessage>, IDisp
     /// Receives OSC messages from the VRChat OSC client and updates the leash context accordingly.
     /// </summary>
     /// <param name="message"></param>
-    private void Received(OSCMessage message) {
-        if (!message.Address.StartsWith(VRChatOscConstants.ADDRESS_AVATAR_PARAMETERS_PREFIX) || message.Arguments.Length == 0) {
+    private void Received(OSCMessage oscMessage) {
+        VRChatOscMessage message = VRChatOscMessage.Create(oscMessage);
+
+        if (message.MessageType != OscMessageType.AvatarParameter || message.Arguments.Length == 0) {
             return;
         }
 
-        string name = message.Address[VRChatOscConstants.ADDRESS_AVATAR_PARAMETERS_PREFIX.Length..];
-
-        _ = name switch {
-            OSCParameters.IS_GRABBED => f_dispatcherQueue.TryEnqueue(() => f_leashContext.IsGrabbed = (bool)message.Arguments[0]!),
-            OSCParameters.ANGLE => f_dispatcherQueue.TryEnqueue(() => f_leashContext.Angle = (float)message.Arguments[0]!),
-            OSCParameters.STRETCH => f_dispatcherQueue.TryEnqueue(() => f_leashContext.Stretch = (float)message.Arguments[0]!),
-            OSCParameters.FRONT_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.FrontDistance = (float)message.Arguments[0]!),
-            OSCParameters.BACK_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.BackDistance = (float)message.Arguments[0]!),
-            OSCParameters.RIGHT_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.RightDistance = (float)message.Arguments[0]!),
-            OSCParameters.LEFT_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.LeftDistance = (float)message.Arguments[0]!),
+        bool taskAdded = message.ParameterName switch {
+            OSCParameters.IS_GRABBED => f_dispatcherQueue.TryEnqueue(() => f_leashContext.IsGrabbed = (bool)message.ParameterValue),
+            OSCParameters.ANGLE => f_dispatcherQueue.TryEnqueue(() => f_leashContext.Angle = (float)message.ParameterValue),
+            OSCParameters.STRETCH => f_dispatcherQueue.TryEnqueue(() => f_leashContext.Stretch = (float)message.ParameterValue),
+            OSCParameters.FRONT_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.FrontDistance = (float)message.ParameterValue),
+            OSCParameters.BACK_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.BackDistance = (float)message.ParameterValue),
+            OSCParameters.RIGHT_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.RightDistance = (float)message.ParameterValue),
+            OSCParameters.LEFT_COLLIDER => f_dispatcherQueue.TryEnqueue(() => f_leashContext.LeftDistance = (float)message.ParameterValue),
             _ => true, // Ignore unknown parameters
         };
     }
@@ -91,7 +91,7 @@ public partial class VRChatOscClient : IRecipient<ReconnectClientMessage>, IDisp
     /// <typeparam name="T"></typeparam>
     /// <param name="parameter"></param>
     /// <param name="value"></param>
-    public void SendParameter<T>(string parameter, T value) => Send(string.Concat(VRChatOscConstants.ADDRESS_AVATAR_PARAMETERS_PREFIX, parameter), value);
+    public void SendParameter<T>(string parameter, T value) => Send(string.Concat(VRChatOscConstants.PARAMETER_PREFIX, parameter), value);
 
     /// <summary>
     /// Updates an OSC address with the specified values.
@@ -158,7 +158,7 @@ public partial class VRChatOscClient : IRecipient<ReconnectClientMessage>, IDisp
     }
 
     /// <summary>
-    /// STops the VRChat OSC client by disconnecting the receiver and sender.
+    /// Stops the VRChat OSC client by disconnecting the receiver and sender.
     /// </summary>
     /// <returns></returns>
     public async Task StopClient() {

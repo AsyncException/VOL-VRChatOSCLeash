@@ -7,8 +7,5 @@ namespace VRChatOSCLeash.Services.VRChatOSC;
 
 public static class VRChatOscConstants
 {
-    public const string ADDRESS_AVATAR_PARAMETERS_PREFIX = "/avatar/parameters/";
-    public const string ADDRESS_AVATAR_CHANGE = "/avatar/change";
-    public const string ADDRESS_CHATBOX_INPUT = "/chatbox/input";
-    public const string ADDRESS_CHATBOX_TYPING = "/chatbox/typing";
+    public const string PARAMETER_PREFIX = "/avatar/parameters/";
 }
