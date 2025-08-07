@@ -572,6 +572,9 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
-/[Pp]roject[Ss]ettings
-/[Pp]ackages
-/[Ll]ibrary
+
+
+/unity/Library
+/unity/ProjectSettings
+/unity/UserSettings
+/unity/Packages

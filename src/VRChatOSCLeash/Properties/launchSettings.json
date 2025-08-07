@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "VRChatOSCLeash (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "VRChatOSCLeash (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
