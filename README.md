@@ -31,13 +31,15 @@ This project was initially built for fun, but grew into a fully functioning desk
 
 ![Screenshot of VOS-VRChatOSCLEash UI](docs/images/readme_app_screenshot.png)
 
-The WinUI application includes:
+### The WinUI application includes:
 
 - A simple feedback displaying real-time OSC data.
 - Slider-based settings to adjust thresholds for leash responsiveness.
 - A top-down visualizer showing the current leash vector and threshold zones.
 
-The Unity project:
+Full explanation on the [Wiki](https://github.com/AsyncException/VOL-VRChatOSCLeash/wiki/App-layout-and-explanation)
+
+### The Unity project:
 - Contains the scenes and resources to create a untiy package with prefabs.
 
 ---
@@ -80,6 +82,7 @@ Contributions are currently **not** accepted until the first official release is
 ## License
 
 This project is licensed under the [GPL-3.0 license](https://github.com/AsyncException/VOL-VRChatOSCLeash/blob/main/LICENSE).
+
 
 
 
