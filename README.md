@@ -6,7 +6,7 @@ This project was initially built for fun, but grew into a fully functioning desk
 
 ---
 
-## 🧠 Features
+## Features
 
 - Live visualization of leash direction and position relative to the avatar.
 - Counter support that counts the amount of seconds you've been "dragged"
@@ -17,7 +17,7 @@ This project was initially built for fun, but grew into a fully functioning desk
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```plaintext
 /installer             - Inno Setup installer script for building installers
@@ -27,7 +27,7 @@ This project was initially built for fun, but grew into a fully functioning desk
 
 ---
 
-## 🖼️ Application Overview
+## Application Overview
 
 ![Screenshot of VOS-VRChatOSCLEash UI](docs/images/readme_app_screenshot.png)
 
@@ -37,13 +37,13 @@ The WinUI application includes:
 - Slider-based settings to adjust thresholds for leash responsiveness.
 - A top-down visualizer showing the current leash vector and threshold zones.
 
-  The Unity project:
+The Unity project:
 - Contains the scenes and resources to create a untiy package with prefabs.
 
 ---
 
-## 🚀 Getting Started
-📦 Using the Installer
+## Getting Started
+Using the Installer
 - Download and run the installer (see Releases (RC1 coming soon)).
 - Setup your avatar with the required prefabs and OSC parameters (wiki coming soon!).
 - After installation, launch VOS-VRChatOSCLEash from the Start Menu.
@@ -51,7 +51,7 @@ The WinUI application includes:
 
 ---
 
-## ⚙️ Building from Source
+## ⚙Building from Source
 Prerequisites: The app uses WinUI 3 with the Windows APP SDK and .net 9.0.
 Selecting the option "WinUI application development" under "Desktop & Mobile" in the Visual Studio Installer should suffice.
 
@@ -62,7 +62,7 @@ To build manually run:
 
 ---
 
-## 🖥️ Platform Support
+## Platform Support
 
 | Platform | Supported |
 | -------- | --------- |
@@ -71,7 +71,7 @@ To build manually run:
 
 ---
 
-## 📚 Setup Instructions for VRChat Avatars
+## Setup Instructions for VRChat Avatars
 
 ⚠️ A full setup guide will be available soon in the form of a GitHub Wiki.
 
@@ -83,12 +83,13 @@ For now, the general steps are:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are currently **not** accepted until the first official release is completed. Stay tuned!
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [Apache License 2.0](https://github.com/AsyncException/VOL-VRChatOSCLeash/blob/main/LICENSE).
+
