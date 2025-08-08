@@ -91,6 +91,7 @@ Contributions are currently **not** accepted until the first official release is
 
 ## License
 
-This project is licensed under the [Apache License 2.0](https://github.com/AsyncException/VOL-VRChatOSCLeash/blob/main/LICENSE).
+This project is licensed under the [GPL-3.0 license](https://github.com/AsyncException/VOL-VRChatOSCLeash/blob/main/LICENSE).
+
 
 
