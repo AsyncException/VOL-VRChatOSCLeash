@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define AppName "VRChat OSC Leash"
-#define AppVersion "1.0.0-beta"
+#define AppVersion "2025.08.1-RC1"
 #define AppPublisher "Async"
 #define AppExeName "VRChatOSCLeash.exe"
 
@@ -52,3 +52,29 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExeName}"; Tasks: deskto
 [Run]
 Filename: "{app}\{#AppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(AppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
+[Code]
+procedure DeinitializeUninstall();
+var
+  AppDataPath: string;
+  UserChoice: Integer;
+begin
+  // Don't show if silent uninstall
+  if UninstallSilent() then
+    Exit;
+
+  AppDataPath := ExpandConstant('{userappdata}\VRChat OSC Leash');
+
+  if DirExists(AppDataPath) then
+  begin
+    UserChoice :=
+      MsgBox('Do you also want to remove your application data?'#13#10 +
+             'This will delete the folder:'#13#10 + AppDataPath,
+             mbConfirmation, MB_YESNO or MB_DEFBUTTON2);
+
+    if UserChoice = IDYES then
+    begin
+      DelTree(AppDataPath, True, True, True);
+      MsgBox('Application data removed successfully.', mbInformation, MB_OK);
+    end;
+  end;
+end;
