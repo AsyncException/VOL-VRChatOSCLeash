@@ -43,15 +43,15 @@ The Unity project:
 ---
 
 ## Getting Started
-Using the Installer
-- Download and run the installer (see Releases (RC1 coming soon)).
-- Setup your avatar with the required prefabs and OSC parameters (wiki coming soon!).
-- After installation, launch VOS-VRChatOSCLEash from the Start Menu.
+
+### Using the Installer
+- Download and run the installer (see [Releases](https://github.com/AsyncException/VOL-VRChatOSCLeash/releases)).
+- Setup your avatar with the required prefabs and OSC parameters ([Wiki setup page](https://github.com/AsyncException/VOL-VRChatOSCLeash/wiki/Unity-Avatar-setup)).
+- After installation, launch VRChat OSC Leash from the Start Menu.
 - Boot into VRChat and have fun!
 
----
 
-## ⚙Building from Source
+### Building from Source
 Prerequisites: The app uses WinUI 3 with the Windows APP SDK and .net 9.0.
 Selecting the option "WinUI application development" under "Desktop & Mobile" in the Visual Studio Installer should suffice.
 
@@ -71,18 +71,6 @@ To build manually run:
 
 ---
 
-## Setup Instructions for VRChat Avatars
-
-⚠️ A full setup guide will be available soon in the form of a GitHub Wiki.
-
-For now, the general steps are:
-
-- Open your VRChat Unity project.
-- Import the required prefab(s) from the unity folder.
-- Configure the OSC parameters as needed to match what the app expects.
-
----
-
 ## Contributing
 
 Contributions are currently **not** accepted until the first official release is completed. Stay tuned!
@@ -92,6 +80,7 @@ Contributions are currently **not** accepted until the first official release is
 ## License
 
 This project is licensed under the [GPL-3.0 license](https://github.com/AsyncException/VOL-VRChatOSCLeash/blob/main/LICENSE).
+
 
 
 
