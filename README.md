@@ -1,6 +1,6 @@
 # VOL-VRChatOSCLeash
 
-**VRChat OSC Leash (VOL)** is a Windows application that allows other players in **VRChat** to "drag" your avatar in a specific direction—typically using a virtual leash.
+**VRChat OSC Leash (VOL)** is a Windows application that allows other players in **VRChat** to "drag" your avatar in a specific direction using a leash.
 
 This project was initially built for fun, but grew into a fully functioning desktop application with a visual interface.
 
@@ -92,4 +92,5 @@ Contributions are currently **not** accepted until the first official release is
 ## License
 
 This project is licensed under the [Apache License 2.0](https://github.com/AsyncException/VOL-VRChatOSCLeash/blob/main/LICENSE).
+
 
