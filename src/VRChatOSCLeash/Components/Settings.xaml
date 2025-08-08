@@ -76,7 +76,7 @@
 
         <StackPanel Style="{StaticResource Spacer}" Visibility="{x:Bind ApplicationSettings.GlobalEnableLeash, Converter={StaticResource Visibility}, Mode=OneWay}">
             
-            <TextBlock Text="Running Upper Treshold" />
+            <TextBlock Text="Running Upper Threshold" />
             
             <StackPanel Orientation="Horizontal">
 
@@ -101,7 +101,7 @@
 
         <StackPanel Style="{StaticResource Spacer}" Visibility="{x:Bind ApplicationSettings.GlobalEnableLeash, Converter={StaticResource Visibility}, Mode=OneWay}">
             
-            <TextBlock Text="Running Lower Treshold" />
+            <TextBlock Text="Running Lower Threshold" />
             
             <StackPanel Orientation="Horizontal">
 
@@ -126,7 +126,7 @@
 
         <StackPanel Style="{StaticResource Spacer}" Visibility="{x:Bind ApplicationSettings.GlobalEnableLeash, Converter={StaticResource Visibility}, Mode=OneWay}">
             
-            <TextBlock Text="Stretch Treshold" />
+            <TextBlock Text="Stretch Threshold" />
             
             <StackPanel Orientation="Horizontal">
 
@@ -150,7 +150,7 @@
 
         <StackPanel Style="{StaticResource Spacer}" Visibility="{x:Bind ApplicationSettings.GlobalEnableLeash, Converter={StaticResource Visibility}, Mode=OneWay}">
             
-            <TextBlock Text="Turning Treshold" />
+            <TextBlock Text="Turning Threshold" />
             
             <StackPanel Orientation="Horizontal">
 
